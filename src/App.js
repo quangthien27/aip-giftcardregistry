@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import PageHome from './containers/PageHome';
 import PageLogin from './containers/PageLogin';
 import PageRegister from './containers/PageRegister';
+import PageTest from './containers/PageTest';
 import PartHeader from './components/PartHeader';
 import PartFooter from './components/PartFooter';
 
@@ -22,6 +23,7 @@ class App extends Component {
               <Route exact path="/" component={PageHome}/>
               <Route path="/login" component={PageLogin}/>
               <Route path="/register" component={PageRegister}/>
+              <Route path="/test" component={PageTest}/>
             </div>
           </main>
 

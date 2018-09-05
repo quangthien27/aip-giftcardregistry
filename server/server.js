@@ -33,3 +33,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Enable route for API
 app.use('/api', apiRoutes);
+
+app.get('/', (req, res) => {
+  return res.end('Api is running');
+});

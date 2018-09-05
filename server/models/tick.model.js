@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const TickSchema = new Schema({
   count: {
     type: Number,
+    default: 0
   }
 });
 

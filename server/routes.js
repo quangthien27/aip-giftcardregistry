@@ -1,5 +1,5 @@
-const user = require('./user');
-const tick = require('./tick');
+const user = require('./user.controller');
+const tick = require('./tick.controller');
 
 module.exports = function(app, express) {
   const apiRouter = express.Router();
