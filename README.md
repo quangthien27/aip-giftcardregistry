@@ -1,3 +1,10 @@
+## Running the project
+- Install MongoDB to the machine: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x
+- Navigate to project folder in terminal
+- Run `sh start-mongod.sh`
+- Run `npm install`
+- Run `npm start` to start the project
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

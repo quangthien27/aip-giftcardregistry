@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Register page content
 const PageRegister = () => (
   <React.Fragment>
     <h1 className="text-center mb-4">Register</h1>
@@ -22,6 +23,7 @@ const PageRegister = () => (
             <input type="password" className="form-control" id="registerPassword2" placeholder="Confirm Password"/>
           </div>
 
+          {/* Submit button */}
           <button type="submit" className="btn btn-primary mt-3">Submit</button>
         </form>
       </div>

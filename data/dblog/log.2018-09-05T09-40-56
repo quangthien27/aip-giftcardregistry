@@ -1,0 +1,52 @@
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] MongoDB starting : pid=55420 port=27017 dbpath=./data/db 64-bit host=Thiens-MacBook-Pro.local
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] db version v4.0.1
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] git version: 54f1582fc6eb01de4d4c42f26fc133e623f065fb
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] allocator: system
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] modules: none
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] build environment:
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten]     distarch: x86_64
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten]     target_arch: x86_64
+2018-09-05T18:42:01.697+1000 I CONTROL  [initandlisten] options: { storage: { dbPath: "./data/db" }, systemLog: { destination: "file", path: "./data/dblog/log" } }
+2018-09-05T18:42:01.700+1000 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),statistics_log=(wait=0),verbose=(recovery_progress),
+2018-09-05T18:42:02.373+1000 I STORAGE  [initandlisten] WiredTiger message [1536136922:373631][55420:0x7fffb36d5380], txn-recover: Set global recovery timestamp: 0
+2018-09-05T18:42:02.457+1000 I RECOVERY [initandlisten] WiredTiger recoveryTimestamp. Ts: Timestamp(0, 0)
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] 
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] 
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2018-09-05T18:42:02.537+1000 I CONTROL  [initandlisten] 
+2018-09-05T18:42:02.547+1000 I STORAGE  [initandlisten] createCollection: admin.system.version with provided UUID: 7c9612a5-cae9-46ac-9983-b3a5495550b4
+2018-09-05T18:42:02.619+1000 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 4.0
+2018-09-05T18:42:02.625+1000 I STORAGE  [initandlisten] createCollection: local.startup_log with generated UUID: b801bb99-1d05-4f4d-a0f3-6c26a06cf487
+2018-09-05T18:42:02.702+1000 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/db/diagnostic.data'
+2018-09-05T18:42:02.708+1000 I NETWORK  [initandlisten] waiting for connections on port 27017
+2018-09-05T18:42:02.708+1000 I STORAGE  [LogicalSessionCacheRefresh] createCollection: config.system.sessions with generated UUID: b7ff7867-cd0e-47a6-8d02-eba32d83ac8b
+2018-09-05T18:42:02.825+1000 I INDEX    [LogicalSessionCacheRefresh] build index on: config.system.sessions properties: { v: 2, key: { lastUse: 1 }, name: "lsidTTLIndex", ns: "config.system.sessions", expireAfterSeconds: 1800 }
+2018-09-05T18:42:02.826+1000 I INDEX    [LogicalSessionCacheRefresh] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2018-09-05T18:42:02.841+1000 I INDEX    [LogicalSessionCacheRefresh] build index done.  scanned 0 total records. 0 secs
+2018-09-05T18:42:02.841+1000 I COMMAND  [LogicalSessionCacheRefresh] command config.$cmd command: createIndexes { createIndexes: "system.sessions", indexes: [ { key: { lastUse: 1 }, name: "lsidTTLIndex", expireAfterSeconds: 1800 } ], $db: "config" } numYields:0 reslen:114 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { W: 1 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_msg 133ms
+2018-09-05T18:54:18.856+1000 I NETWORK  [listener] connection accepted from 127.0.0.1:56844 #1 (1 connection now open)
+2018-09-05T18:54:18.858+1000 I NETWORK  [conn1] received client metadata from 127.0.0.1:56844 conn1: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "4.0.1" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "17.7.0" } }
+2018-09-05T18:54:24.683+1000 I NETWORK  [conn1] end connection 127.0.0.1:56844 (0 connections now open)
+2018-09-05T19:37:07.451+1000 I NETWORK  [listener] connection accepted from 127.0.0.1:64955 #2 (1 connection now open)
+2018-09-05T19:37:07.459+1000 I NETWORK  [conn2] received client metadata from 127.0.0.1:64955 conn2: { driver: { name: "nodejs", version: "3.1.3" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "17.7.0" }, platform: "Node.js v8.9.1, LE, mongodb-core: 3.1.2" }
+2018-09-05T19:37:07.486+1000 I STORAGE  [conn2] createCollection: gift-card-registry.users with generated UUID: e52b78f4-e7b9-4e4f-8c1d-00d990020f92
+2018-09-05T19:37:07.613+1000 I INDEX    [conn2] build index on: gift-card-registry.users properties: { v: 2, unique: true, key: { email: 1 }, name: "email_1", ns: "gift-card-registry.users", background: true }
+2018-09-05T19:37:07.617+1000 I INDEX    [conn2] build index done.  scanned 0 total records. 0 secs
+2018-09-05T19:37:07.617+1000 I COMMAND  [conn2] command gift-card-registry.$cmd command: createIndexes { createIndexes: "users", indexes: [ { name: "email_1", key: { email: 1 }, unique: true, background: true } ], lsid: { id: UUID("df58ebff-a48b-409d-8cf9-146eca1d4691") }, $db: "gift-card-registry" } numYields:0 reslen:129 locks:{ Global: { acquireCount: { r: 1, w: 1 } }, Database: { acquireCount: { w: 1, W: 2 } }, Collection: { acquireCount: { w: 1 } } } protocol:op_query 131ms
+2018-09-05T19:37:18.769+1000 I NETWORK  [conn2] end connection 127.0.0.1:64955 (0 connections now open)
+2018-09-05T19:37:22.819+1000 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2018-09-05T19:37:22.819+1000 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2018-09-05T19:37:22.819+1000 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2018-09-05T19:37:22.821+1000 I CONTROL  [signalProcessingThread] Shutting down free monitoring
+2018-09-05T19:37:22.822+1000 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2018-09-05T19:37:22.825+1000 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2018-09-05T19:37:23.083+1000 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2018-09-05T19:37:23.085+1000 I CONTROL  [signalProcessingThread] now exiting
+2018-09-05T19:37:23.085+1000 I CONTROL  [signalProcessingThread] shutting down with code:0

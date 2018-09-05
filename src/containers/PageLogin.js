@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+// Login page content
 const PageLogin = () => (
   <div className="container">
     <h1 className="text-center mb-4">Login</h1>
@@ -19,8 +20,10 @@ const PageLogin = () => (
             <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
           </div>
 
+          {/* Submit button */}
           <button type="submit" className="btn btn-primary mt-3">Submit</button>
 
+          {/* Propose creating an account */}
           <p className="mt-3 mb-0">
             <small className="text-muted">Don't have an account? <Link to="/register">Register Now</Link></small>
           </p>
