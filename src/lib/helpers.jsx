@@ -75,18 +75,18 @@ const helpers = {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   },
   isUserLoggedIn: () => {
-    const isUserLoggedIn = helpers.docCookies.getItem('gcr_user_logged_in');
+    const userID = helpers.docCookies.getItem('gcr_user_logged_in');
 
-    if (null !== isUserLoggedIn) {
-      helpers.setUserLoggedIn(true); // Set LoggedIn status for another hour
+    if (null !== userID) {
+      helpers.setUserLoggedIn(userID); // Set LoggedIn status for another hour
       return true;
     } else {
       return false;
     }
   },
-  setUserLoggedIn: (isUserLoggedIn = true) => {
-    if (isUserLoggedIn) {
-      helpers.docCookies.setItem('gcr_user_logged_in', 1, 3600, '/');
+  setUserLoggedIn: (userID = true) => {
+    if (userID) {
+      helpers.docCookies.setItem('gcr_user_logged_in', userID, 3600, '/');
     } else {
       helpers.docCookies.removeItem('gcr_user_logged_in', '/');
     }

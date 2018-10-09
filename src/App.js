@@ -5,6 +5,7 @@ import PageHome from './containers/PageHome';
 import PageLogin from './containers/PageLogin';
 import PageDashboard from './containers/PageDashboard';
 import PageRegister from './containers/PageRegister';
+import PageRegistryNew from './containers/PageRegistryNew';
 import PageTest from './containers/PageTest';
 import PartHeader from './components/PartHeader';
 import PartFooter from './components/PartFooter';
@@ -39,7 +40,15 @@ class App extends Component {
                 )
               )}/>
 
-              <Route exact path="/login" render={() => (
+              <Route exact path="/dashboard/create-registry" render={() => (
+                !isUserLoggedIn ? (
+                  <Redirect to="/login"/>
+                ) : (
+                  <PageRegistryNew/>
+                )
+              )}/>
+
+              <Route path="/login" render={() => (
                 isUserLoggedIn ? (
                   <Redirect to="/dashboard"/>
                 ) : (
@@ -47,7 +56,7 @@ class App extends Component {
                 )
               )}/>
 
-              <Route exact path="/register" render={() => (
+              <Route path="/register" render={() => (
                 isUserLoggedIn ? (
                   <Redirect to="/dashboard"/>
                 ) : (

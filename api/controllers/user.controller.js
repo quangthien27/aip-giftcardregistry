@@ -6,13 +6,13 @@ const md5 = require('md5');
 const methods = {
   getUser: function(req, res) {
     // Get user data
-    UserModel.find({email: req.params.userEmail}, function(err, result) {
+    UserModel.find({email: req.params.userEmail}, function(err, users) {
       if (err) {
         res.status(500).send(err);
       }
 
-      if (result.length) {
-        const userFound = result.pop();
+      if (users.length) {
+        const userFound = users.pop();
 
         const userFoundReturned = {
           email: userFound.email
@@ -31,12 +31,12 @@ const methods = {
     });
   },
   addUser: function(req, res) {
-    UserModel.find({email: req.body.email}, function(err, result) {
+    UserModel.find({email: req.body.email}, function(err, users) {
       if (err) {
         res.status(500).send(err);
       }
 
-      if (result.length) {
+      if (users.length) {
         return res.json({
           success: false,
           message: 'A user with this email has been registered'
@@ -72,8 +72,8 @@ const methods = {
         // Hash the password
         newUser.password = md5(req.body.password);
 
-        // TODO: Define admin on specific condition
-        /*newUser.isAdmin = true;*/
+        // TODO: Define admin on more specific condition
+        newUser.isAdmin = (newUser.email.toLowerCase() === 'quangthien27@gmail.com');
 
         newUser.save((err, newUser) => {
           if (err) {
@@ -82,32 +82,37 @@ const methods = {
 
           return res.json({
             success: true,
-            message: 'User added successfully'
+            message: 'User added successfully',
+            userID: newUser._id
           });
         });
       }
     });
   },
   authorizeUser: function(req, res) {
-    UserModel.find({email: req.body.email}, function(err, result) {
+    UserModel.find({email: req.body.email}, function(err, users) {
       if (err) {
         res.status(500).send(err);
       }
 
       let authorized = true;
 
-      if (!result.length) {
+      if (!users.length) {
         authorized = false;
       } else {
-        const foundUser = result.pop();
+        const foundUser = users.pop();
         if (foundUser.password !== md5(req.body.password)) {
           authorized = false;
+        } else {
+          authorized = foundUser._id;
         }
       }
 
       if (authorized) {
         return res.json({
-          success: true
+          success: true,
+          message: 'Login successfully',
+          userID: authorized
         });
       } else {
         return res.json({

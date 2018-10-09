@@ -1,7 +1,7 @@
 import React from 'react';
-import FormPage from '../components/FormPage';
 import axios from 'axios';
 import helpers from '../lib/helpers';
+import FormPage from '../components/FormPage';
 
 // Register page content
 class PageRegister extends FormPage {
@@ -10,15 +10,11 @@ class PageRegister extends FormPage {
 
     this.state = {
       formFields: {
-        fullName: '',
-        email: '',
-        phone: '',
-        password: '',
-        address: '',
-        suburb: '',
-        state: '',
-        postcode: '',
-        country: 'AU'
+        event: '',
+        greetingMessage: '',
+        cardDesign: '',
+        closeDate: '',
+        userID: helpers.docCookies.getItem('gcr_user_logged_in')
       }
     };
   }
@@ -26,14 +22,13 @@ class PageRegister extends FormPage {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const form = document.getElementById('registerForm');
+    const form = document.getElementById('newRegistryForm');
     const isValidForm = form.checkValidity();
 
     if (isValidForm) {
-      axios.post(`${window.GCR.apiBase}/api/user/addUser`, this.state.formFields).then(function(response) {
+      axios.post(`${window.GCR.apiBase}/api/registry/addRegistry`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
-            helpers.setUserLoggedIn(response.data.userID);
             window.location.href = '/dashboard';
           } else {
             alert(response.data.message);
@@ -52,7 +47,7 @@ class PageRegister extends FormPage {
   render() {
     return (
       <React.Fragment>
-        <h1 className="text-center mb-4">Register</h1>
+        <h1 className="text-center mb-4">New Register</h1>
 
         <div className="card mx-auto" style={{maxWidth: 500}}>
           <div className="card-body">
@@ -60,21 +55,20 @@ class PageRegister extends FormPage {
               <div className="form-group">
                 <input type="text"
                        className="form-control"
-                       name="fullName"
-                       placeholder="Your full name *"
+                       name="event"
+                       placeholder="Event name *"
                        required={true}
                        onChange={this.handleInputChange}
-                       value={this.state.formFields.fullName}
+                       value={this.state.formFields.event}
                 />
               </div>
               <div className="form-group">
-                <input type="email"
-                       className="form-control"
-                       name="email"
-                       placeholder="Email address *"
-                       required={true}
-                       onChange={this.handleInputChange}
-                       value={this.state.formFields.email}
+                <textarea className="form-control"
+                          name="greetingMessage"
+                          placeholder="Greeting message to your friend"
+                          onChange={this.handleInputChange}
+                          value={this.state.formFields.greetingMessage}
+                          rows={50}
                 />
               </div>
 

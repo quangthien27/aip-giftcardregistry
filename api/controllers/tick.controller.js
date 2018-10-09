@@ -36,7 +36,7 @@ const methods = {
   },
   increaseTick: function(req, res) {
     // Get user data
-    TickModel.findById('5b8fae9ba529d3e15648f962', function(err, tick) {
+    TickModel.findById('5bbca22f89bba598f2a3d628', function(err, tick) {
       if (err) {
         res.status(500).send(err);
       }
@@ -44,7 +44,7 @@ const methods = {
       tick.count += 1;
 
       TickModel.findOneAndUpdate({
-        _id: '5b8fae9ba529d3e15648f962'
+        _id: '5bbca22f89bba598f2a3d628'
       }, tick, {new: true}, (err, tick) => {
         if (err) {
           return res.json({'success': false, 'message': 'Some Error', 'error': err});

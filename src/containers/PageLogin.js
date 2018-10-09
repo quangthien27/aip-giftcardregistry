@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import helpers from '../lib/helpers';
+import FormPage from '../components/FormPage';
 
 // Login page content
-class PageLogin extends Component {
+class PageLogin extends FormPage {
   constructor(props) {
     super(props);
 
@@ -16,18 +17,6 @@ class PageLogin extends Component {
     };
   }
 
-  handleInputChange = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    const formFields = {...this.state.formFields};
-
-    formFields[name] = value;
-
-    this.setState({formFields: formFields});
-  };
-
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -38,7 +27,7 @@ class PageLogin extends Component {
       axios.post(`${window.GCR.apiBase}/api/user/authorizeUser`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
-            helpers.setUserLoggedIn(true);
+            helpers.setUserLoggedIn(response.data.userID);
             window.location.href = '/dashboard';
           } else {
             alert(response.data.message);
