@@ -14,8 +14,6 @@ const mongoURL = mongoose.connect('mongodb://localhost/gift-card-registry', {
   useNewUrlParser: true
 });
 
-const apiRoutes = require('./routes')(app, express);
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
@@ -32,8 +30,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Enable route for API
-app.use('/api', apiRoutes);
+app.use('/api', require('./routes')(app, express));
 
+// Endpoint for API status
 app.get('/', (req, res) => {
   return res.end('Api is running');
 });

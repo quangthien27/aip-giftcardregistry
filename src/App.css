@@ -32,3 +32,9 @@ body {
 
 .header {
   padding: 25px; }
+
+.section-how-it-works .card {
+  min-height: 175px; }
+
+.form-group select {
+  height: 38px; }

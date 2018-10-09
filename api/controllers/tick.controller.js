@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({});
-const TickModel = require('./models/tick.model');
+const TickModel = require('../models/tick.model');
 
 const methods = {
   getTicks: function(req, res) {
