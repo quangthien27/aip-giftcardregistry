@@ -62,7 +62,7 @@ class PageRegistrySingle extends FormPage {
       axios.post(`${configs.apiBase}/api/registry/updateRegistry`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
-            alert('Thanks for your contribution');
+            alert('Thanks for your contribution! You can now close the window or continue to contribute :)');
           } else {
             alert(response.data.message);
           }
