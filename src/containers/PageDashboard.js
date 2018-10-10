@@ -78,7 +78,7 @@ class PageDashboard extends Component {
           this.state.loading ? (
             <p className="text-center py-5">Loading...</p>
           ) : (
-            <p className="text-center py-5">No Registry found.</p>
+            <p className="text-center py-5">No registry are created yet. Just click on "Create Gift Card Registry" button below to create one!</p>
           )
         )}
 

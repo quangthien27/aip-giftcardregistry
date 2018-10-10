@@ -128,6 +128,7 @@ class PageRegister extends FormPage {
               </div>
 
               <div className="form-group">
+                <label className="mb-1">State *</label>
                 <select name="state"
                         className="w-100 form-control"
                         required={true}
@@ -145,6 +146,7 @@ class PageRegister extends FormPage {
               </div>
 
               <div className="form-group">
+                <label className="mb-1">Country *</label>
                 <select name="country"
                         className="w-100 form-control"
                         required={true}

@@ -75,6 +75,7 @@ class PageRegistryAddNew extends FormPage {
               </div>
 
               <div className="form-group">
+                <label className="mb-1">Card Design *</label>
                 <select name="cardDesign"
                         className="w-100 form-control"
                         required={true}
@@ -89,6 +90,7 @@ class PageRegistryAddNew extends FormPage {
               </div>
 
               <div className="form-group">
+                <label className="mb-1">Registry close date *</label>
                 <input type="date"
                        className="form-control"
                        name="closeDate"
@@ -99,6 +101,8 @@ class PageRegistryAddNew extends FormPage {
                        value={this.state.formFields.password}
                 />
               </div>
+
+              <p className="text-muted small">* is required field</p>
 
               {/* Submit button */}
               <button type="submit" className="btn btn-primary mt-3">Submit</button>
