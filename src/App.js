@@ -5,16 +5,12 @@ import PageHome from './containers/PageHome';
 import PageLogin from './containers/PageLogin';
 import PageDashboard from './containers/PageDashboard';
 import PageRegister from './containers/PageRegister';
-import PageRegistryNew from './containers/PageRegistryNew';
+import PageRegistryAddNew from './containers/PageRegistryAddNew';
+import PageRegistrySingle from './containers/PageRegistrySingle';
 import PageTest from './containers/PageTest';
 import PartHeader from './components/PartHeader';
 import PartFooter from './components/PartFooter';
-import helpers from './lib/helpers';
-
-// Global var
-window.GCR = {
-  apiBase: 'http://localhost:5000'
-};
+import helpers from './inc/helpers';
 
 // Main App
 class App extends Component {
@@ -31,6 +27,7 @@ class App extends Component {
           <main id="content">
             <div className="container">
               <Route exact path="/" component={PageHome}/>
+              <Route path="/registry/:registryID" component={PageRegistrySingle}/>
 
               <Route exact path="/dashboard" render={() => (
                 !isUserLoggedIn ? (
@@ -44,7 +41,7 @@ class App extends Component {
                 !isUserLoggedIn ? (
                   <Redirect to="/login"/>
                 ) : (
-                  <PageRegistryNew/>
+                  <PageRegistryAddNew/>
                 )
               )}/>
 

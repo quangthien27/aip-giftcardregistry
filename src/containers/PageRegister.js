@@ -1,7 +1,8 @@
 import React from 'react';
 import FormPage from '../components/FormPage';
 import axios from 'axios';
-import helpers from '../lib/helpers';
+import helpers from '../inc/helpers';
+import configs from '../inc/configs';
 
 // Register page content
 class PageRegister extends FormPage {
@@ -30,7 +31,7 @@ class PageRegister extends FormPage {
     const isValidForm = form.checkValidity();
 
     if (isValidForm) {
-      axios.post(`${window.GCR.apiBase}/api/user/addUser`, this.state.formFields).then(function(response) {
+      axios.post(`${configs.apiBase}/api/user/addUser`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
             helpers.setUserLoggedIn(response.data.userID);
@@ -128,7 +129,7 @@ class PageRegister extends FormPage {
 
               <div className="form-group">
                 <select name="state"
-                        className="w-100"
+                        className="w-100 form-control"
                         required={true}
                         onChange={this.handleInputChange}
                         value={this.state.formFields.state}
@@ -145,7 +146,7 @@ class PageRegister extends FormPage {
 
               <div className="form-group">
                 <select name="country"
-                        className="w-100"
+                        className="w-100 form-control"
                         required={true}
                         onChange={this.handleInputChange}
                         value={this.state.formFields.country}

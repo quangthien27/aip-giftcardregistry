@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../assets/images/logo.jpg';
-import helpers from '../lib/helpers';
+import helpers from '../inc/helpers';
 
 // Header
 class PartHeader extends Component {

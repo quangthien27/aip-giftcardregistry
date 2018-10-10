@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import helpers from '../lib/helpers';
+import helpers from '../inc/helpers';
+import configs from '../inc/configs';
 import FormPage from '../components/FormPage';
 
 // Login page content
@@ -24,7 +25,7 @@ class PageLogin extends FormPage {
     const isValidForm = form.checkValidity();
 
     if (isValidForm) {
-      axios.post(`${window.GCR.apiBase}/api/user/authorizeUser`, this.state.formFields).then(function(response) {
+      axios.post(`${configs.apiBase}/api/user/authorizeUser`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
             helpers.setUserLoggedIn(response.data.userID);

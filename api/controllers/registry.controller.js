@@ -31,7 +31,7 @@ const methods = {
     });
   },
   getRegistry: function(req, res) {
-    RegistryModel.findById(req.body.registryID, function(err, registry) {
+    RegistryModel.findById(req.params['registryID'], function(err, registry) {
       if (err) {
         res.status(500).send(err);
       }
@@ -69,10 +69,35 @@ const methods = {
         message: 'No registry found for that user'
       });
     });
+  },
+  updateRegistry: function(req, res) {
+    RegistryModel.findById(req.body.registryID, function(err, registry) {
+      if (err) {
+        res.status(500).send(err);
+      }
+
+      registry.amount += parseInt(req.body.amount);
+
+      RegistryModel.findOneAndUpdate({
+        _id: req.body.registryID
+      }, registry, {new: false}, (err, registry) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+
+        return res.json({
+          success: true,
+          message: 'Registry updated',
+          registry: registry
+        });
+      });
+    });
   }
 };
 
 router.post('/addRegistry', methods.addRegistry);
-router.post('/getRegistry', methods.getRegistry);
+router.post('/updateRegistry', methods.updateRegistry);
+router.get('/getRegistry/:registryID', methods.getRegistry);
+router.post('/getAllRegistries', methods.getAllRegistries);
 
 module.exports = Object.assign(router, {methods});

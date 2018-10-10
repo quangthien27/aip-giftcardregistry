@@ -7,6 +7,7 @@ const RegistrySchema = new Schema({
   greetingMessage: {type: String, required: [true, 'Message field is required']},
   cardDesign: {type: Number, required: [true, 'Card Design field is required']},
   closeDate: {type: Date, required: [true, 'Date field is required']},
+  amount: {type: Number, default: 0},
   userID: {type: String, required: [true, 'User ID field is required']}
 });
 

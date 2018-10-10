@@ -38,3 +38,9 @@ body {
 
 .form-group select {
   height: 38px; }
+
+.admin-message {
+  white-space: nowrap;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis; }

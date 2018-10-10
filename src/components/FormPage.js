@@ -1,4 +1,6 @@
-import React, {Component} from 'react';
+/*eslint-disable no-useless-constructor*/
+
+import {Component} from 'react';
 
 // Register page content
 class FormPage extends Component {
