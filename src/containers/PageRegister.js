@@ -166,6 +166,8 @@ class PageRegister extends FormPage {
                 />
               </div>
 
+              <p className="text-muted small">* is required field</p>
+
               {/* Submit button */}
               <button type="submit" className="btn btn-primary mt-3">Submit</button>
             </form>

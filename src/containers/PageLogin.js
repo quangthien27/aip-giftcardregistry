@@ -77,6 +77,8 @@ class PageLogin extends FormPage {
                 <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
               </div>*/}
 
+              <p className="text-muted small">* is required field</p>
+
               {/* Submit button */}
               <button type="submit" className="btn btn-primary mt-3">Submit</button>
 
