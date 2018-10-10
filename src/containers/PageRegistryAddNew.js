@@ -49,7 +49,7 @@ class PageRegistryAddNew extends FormPage {
   render() {
     return (
       <React.Fragment>
-        <h1 className="text-center mb-4">New Register</h1>
+        <h1 className="text-center mb-4">Create New Registry</h1>
 
         <div className="card mx-auto" style={{maxWidth: 500}}>
           <div className="card-body">
