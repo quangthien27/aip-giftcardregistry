@@ -10,7 +10,7 @@ app.use(helmet());
 
 // Connect to mongoDB
 mongoose.Promise = global.Promise;
-const mongoURL = mongoose.connect('mongodb://localhost/gift-card-registry', {
+const mongoURL = mongoose.connect('mongodb://13.236.71.75:27017/gift-card-registry', {
   useNewUrlParser: true
 });
 
