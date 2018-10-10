@@ -153,7 +153,7 @@ class PageRegister extends FormPage {
                         onChange={this.handleInputChange}
                         value={this.state.formFields.country}
                 >
-                  <option value="AU" disabled={true}>Australia</option>
+                  <option value="AU">Australia</option>
                 </select>
               </div>
 
