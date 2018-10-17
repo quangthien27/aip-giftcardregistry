@@ -4,6 +4,11 @@ const UserModel = require('../models/user.model');
 const md5 = require('md5');
 
 const methods = {
+  /**
+   * Find user by email address
+   * @param req
+   * @param res
+   */
   getUser: function(req, res) {
     // Get user data
     UserModel.find({email: req.params.userEmail}, function(err, users) {
@@ -14,45 +19,42 @@ const methods = {
       if (users.length) {
         const userFound = users.pop();
 
-        const userFoundReturned = {
-          email: userFound.email
-        };
-
         return res.json({
           success: true,
-          user: userFoundReturned
+          user: {
+            email: userFound.email
+          }
         });
       }
 
       return res.json({
         success: false,
-        message: 'Not found user'
+        message: 'User not found'
       });
     });
   },
+
+  /**
+   * Add a new user to database
+   * @param req
+   * @param res
+   */
   addUser: function(req, res) {
+    // Look up if user exists in database
     UserModel.find({email: req.body.email}, function(err, users) {
       if (err) {
         res.status(500).send(err);
       }
 
       if (users.length) {
+        // User found
         return res.json({
           success: false,
           message: 'A user with this email has been registered'
         });
       } else {
+        // Create new user
         const newUser = new UserModel();
-
-        /*newUser.email = 'quangthien27@gmail.com';
-        newUser.fullName = 'Thien Nguyen';
-        newUser.phone = '0404040404';
-        newUser.address = 'Address';
-        newUser.suburb = 'Suburb';
-        newUser.state = 'NSW';
-        newUser.postcode = '1111';
-        newUser.country = 'AU';
-        newUser.password = md5('1234');*/
 
         const fields = [
           'fullName',
@@ -65,16 +67,18 @@ const methods = {
           'country'
         ];
 
+        // Map request's payload to new user fields
         fields.forEach(field => {
           newUser[field] = req.body[field];
         });
 
-        // Hash the password
+        // Hash the password before saving
         newUser.password = md5(req.body.password);
 
-        // TODO: Define admin on more specific condition
+        // TODO: Define admin on more specific condition, only 1 email as admin for now
         newUser.isAdmin = (newUser.email.toLowerCase() === 'quangthien27@gmail.com');
 
+        // Save the user to database
         newUser.save((err, newUser) => {
           if (err) {
             res.status(500).send(err);
@@ -89,6 +93,12 @@ const methods = {
       }
     });
   },
+
+  /**
+   * Authorize user login
+   * @param req
+   * @param res
+   */
   authorizeUser: function(req, res) {
     UserModel.find({email: req.body.email}, function(err, users) {
       if (err) {
@@ -98,9 +108,12 @@ const methods = {
       let authorized = true;
 
       if (!users.length) {
+        // Unauthorized if user not found
         authorized = false;
       } else {
         const foundUser = users.pop();
+
+        // Compare the hashed password
         if (foundUser.password !== md5(req.body.password)) {
           authorized = false;
         } else {
@@ -114,12 +127,12 @@ const methods = {
           message: 'Login successfully',
           userID: authorized
         });
-      } else {
-        return res.json({
-          success: false,
-          message: 'Invalid Username or Password'
-        });
       }
+
+      return res.json({
+        success: false,
+        message: 'Invalid Username or Password'
+      });
     });
   }
 };

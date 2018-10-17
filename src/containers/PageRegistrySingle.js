@@ -110,6 +110,7 @@ class PageRegistrySingle extends FormPage {
                   Amount in AUD:
                   <div className="form-group mx-sm-3">
                     <input type="number"
+                           min={1}
                            className="form-control"
                            placeholder="Amount *"
                            name="amount"

@@ -7,7 +7,6 @@ import PageDashboard from './containers/PageDashboard';
 import PageRegister from './containers/PageRegister';
 import PageRegistryAddNew from './containers/PageRegistryAddNew';
 import PageRegistrySingle from './containers/PageRegistrySingle';
-import PageTest from './containers/PageTest';
 import PartHeader from './components/PartHeader';
 import PartFooter from './components/PartFooter';
 import helpers from './inc/helpers';
@@ -60,8 +59,6 @@ class App extends Component {
                   <PageRegister/>
                 )
               )}/>
-
-              <Route path="/test" component={PageTest}/>
             </div>
           </main>
 

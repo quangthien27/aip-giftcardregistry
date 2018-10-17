@@ -22,12 +22,12 @@ class PartHeader extends Component {
             {helpers.isUserLoggedIn() ? (
               <React.Fragment>
                 <Link to="/dashboard" className="btn btn-warning mx-3" style={{minWidth: 100}}>Dashboard</Link>
-                <button className="btn btn-danger mx-3" onClick={this.handleLogoutClick} style={{minWidth: 100}}>Logout</button>
+                <button className="btn btn-danger ml-3 mr-3 mr-xl-0" onClick={this.handleLogoutClick} style={{minWidth: 100}}>Logout</button>
               </React.Fragment>
             ) : (
               <React.Fragment>
                 <Link to="/login" className="btn btn-primary mx-3" style={{minWidth: 100}}>Login</Link>
-                <Link to="/register" className="btn btn-success mx-3" style={{minWidth: 100}}>Register</Link>
+                <Link to="/register" className="btn btn-success ml-3 mr-3 mr-xl-0" style={{minWidth: 100}}>Register</Link>
               </React.Fragment>
             )}
           </div>
