@@ -20,6 +20,9 @@ class PageRegistryAddNew extends FormPage {
     };
   }
 
+  /**
+   * Form submission handler
+   */
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -30,18 +33,18 @@ class PageRegistryAddNew extends FormPage {
       axios.post(`${configs.apiBase}/api/registry/addRegistry`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
-            alert('Registry added. You\'ll now be redirected to dashboard to get the registry link, and SHARE !!!');
-            window.location.href = '/dashboard';
+            alert(configs.messages.registryAdded);
+            window.location.href = configs.endpoints.dashboard;
           } else {
             alert(response.data.message);
           }
         } else {
-          alert('Something went wrong, please try again!');
+          alert(configs.messages.error);
         }
       }).catch(function(error) {
         console.log(error);
 
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       });
     }
   };

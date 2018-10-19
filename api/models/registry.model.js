@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// User scheme
+// Registry scheme
 const RegistrySchema = new Schema({
   event: {
     type: String,
@@ -29,7 +29,7 @@ const RegistrySchema = new Schema({
   }
 });
 
-// Modeling the user
+// Modeling the registry
 const Registry = mongoose.model('registry', RegistrySchema);
 
 module.exports = Registry;

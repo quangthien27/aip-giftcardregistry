@@ -24,6 +24,9 @@ class PageRegister extends FormPage {
     };
   }
 
+  /**
+   * Form submission handler
+   */
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -35,17 +38,17 @@ class PageRegister extends FormPage {
         if (200 === response.status) {
           if (response.data.success) {
             helpers.setUserLoggedIn(response.data.userID);
-            window.location.href = '/dashboard';
+            window.location.href = configs.endpoints.dashboard;
           } else {
             alert(response.data.message);
           }
         } else {
-          alert('Something went wrong, please try again!');
+          alert(configs.messages.error);
         }
       }).catch(function(error) {
         console.log(error);
 
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       });
     }
   };

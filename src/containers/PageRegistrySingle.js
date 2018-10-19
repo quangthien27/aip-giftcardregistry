@@ -43,15 +43,18 @@ class PageRegistrySingle extends FormPage {
           });
         }
       } else {
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       }
     }).catch(function(error) {
       console.log(error);
 
-      alert('Something went wrong, please try again!');
+      alert(configs.messages.error);
     });
   }
 
+  /**
+   * Form submission handler
+   */
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -62,17 +65,17 @@ class PageRegistrySingle extends FormPage {
       axios.post(`${configs.apiBase}/api/registry/updateRegistry`, this.state.formFields).then(function(response) {
         if (200 === response.status) {
           if (response.data.success) {
-            alert('Thanks for your contribution! You can now close the window or continue to contribute :)');
+            alert(configs.messages.registryContributed);
           } else {
             alert(response.data.message);
           }
         } else {
-          alert('Something went wrong, please try again!');
+          alert(configs.messages.error);
         }
       }).catch(function(error) {
         console.log(error);
 
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       });
     }
   };

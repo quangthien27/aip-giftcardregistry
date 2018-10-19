@@ -1,4 +1,5 @@
 const express = require('express');
+const constants = require('../constants');
 const router = express.Router({});
 const UserModel = require('../models/user.model');
 const md5 = require('md5');
@@ -29,7 +30,7 @@ const methods = {
 
       return res.json({
         success: false,
-        message: 'User not found'
+        message: constants.messages.userNotFound
       });
     });
   },
@@ -50,7 +51,7 @@ const methods = {
         // User found
         return res.json({
           success: false,
-          message: 'A user with this email has been registered'
+          message: constants.messages.userDuplicated
         });
       } else {
         // Create new user
@@ -86,7 +87,7 @@ const methods = {
 
           return res.json({
             success: true,
-            message: 'User added successfully',
+            message: constants.messages.userAdded,
             userID: newUser._id
           });
         });
@@ -124,20 +125,23 @@ const methods = {
       if (authorized) {
         return res.json({
           success: true,
-          message: 'Login successfully',
+          message: constants.messages.authSuccess,
           userID: authorized
         });
       }
 
       return res.json({
         success: false,
-        message: 'Invalid Username or Password'
+        message: constants.messages.authFailed
       });
     });
   }
 };
 
+// GET endpoints
 router.get('/getUser/:userEmail', methods.getUser);
+
+// POST endpoints
 router.post('/addUser', methods.addUser);
 router.post('/authorizeUser', methods.authorizeUser);
 

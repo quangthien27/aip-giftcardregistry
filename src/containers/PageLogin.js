@@ -18,6 +18,9 @@ class PageLogin extends FormPage {
     };
   }
 
+  /**
+   * Form submission handler
+   */
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -29,17 +32,17 @@ class PageLogin extends FormPage {
         if (200 === response.status) {
           if (response.data.success) {
             helpers.setUserLoggedIn(response.data.userID);
-            window.location.href = '/dashboard';
+            window.location.href = configs.endpoints.dashboard;
           } else {
             alert(response.data.message);
           }
         } else {
-          alert('Something went wrong, please try again!');
+          alert(configs.messages.error);
         }
       }).catch(function(error) {
         console.log(error);
 
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       });
     }
   };
@@ -72,10 +75,6 @@ class PageLogin extends FormPage {
                        value={this.state.formFields.password}
                 />
               </div>
-              {/*<div className="form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
-              </div>*/}
 
               <p className="text-muted small">* is required field</p>
 

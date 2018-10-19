@@ -30,12 +30,12 @@ class PageDashboard extends Component {
           });
         }
       } else {
-        alert('Something went wrong, please try again!');
+        alert(configs.messages.error);
       }
     }).catch(function(error) {
       console.log(error);
 
-      alert('Something went wrong, please try again!');
+      alert(configs.messages.error);
     });
   }
 
@@ -44,6 +44,7 @@ class PageDashboard extends Component {
       <React.Fragment>
         <h1 className="text-center mb-4">Dashboard</h1>
 
+        {/* Only show the registries table if found */}
         {this.state.registries.length > 0 ? (
           <table className="table table-striped">
             <thead>

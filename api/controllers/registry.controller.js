@@ -52,7 +52,7 @@ const methods = {
       if (null !== registry) {
         return res.json({
           success: true,
-          message: 'Registry found',
+          message: constants.messages.registryFound,
           registry: {
             event: registry.event,
             greetingMessage: registry.greetingMessage,
@@ -63,7 +63,7 @@ const methods = {
 
       return res.json({
         success: false,
-        message: 'Registry not found'
+        message: constants.messages.registryNotFound
       });
     });
   },
@@ -82,7 +82,7 @@ const methods = {
       if (registries.length) {
         return res.json({
           success: true,
-          message: 'Registries found',
+          message: constants.messages.registriesFound,
           registries: registries.map((registry, index) => {
             return {
               event: registry.event,
@@ -97,7 +97,7 @@ const methods = {
 
       return res.json({
         success: false,
-        message: 'No registry found for that user'
+        message: constants.messages.registryNotFound
       });
     });
   },
@@ -126,16 +126,19 @@ const methods = {
 
         return res.json({
           success: true,
-          message: 'Registry updated'
+          message: constants.messages.registryUpdated
         });
       });
     });
   }
 };
 
+// POST endpoints
 router.post('/addRegistry', methods.addRegistry);
 router.post('/updateRegistry', methods.updateRegistry);
-router.get('/getRegistry/:registryID', methods.getRegistry);
 router.post('/getAllRegistries', methods.getAllRegistries);
+
+// GET endpoints
+router.get('/getRegistry/:registryID', methods.getRegistry);
 
 module.exports = Object.assign(router, {methods});

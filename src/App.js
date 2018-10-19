@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <div className="page">
-          {/* HEADER */}
+          {/* Header */}
           <PartHeader/>
 
           {/* Main page content */}
@@ -28,6 +28,7 @@ class App extends Component {
               <Route exact path="/" component={PageHome}/>
               <Route path="/registry/:registryID" component={PageRegistrySingle}/>
 
+              {/* Dashboard page, for logged in users only */}
               <Route exact path="/dashboard" render={() => (
                 !isUserLoggedIn ? (
                   <Redirect to="/login"/>
@@ -36,6 +37,7 @@ class App extends Component {
                 )
               )}/>
 
+              {/* New registry page, for logged in users only */}
               <Route exact path="/dashboard/create-registry" render={() => (
                 !isUserLoggedIn ? (
                   <Redirect to="/login"/>
@@ -44,6 +46,7 @@ class App extends Component {
                 )
               )}/>
 
+              {/* Login page; Redirected to dashboard if already logged in */}
               <Route path="/login" render={() => (
                 isUserLoggedIn ? (
                   <Redirect to="/dashboard"/>
@@ -52,6 +55,7 @@ class App extends Component {
                 )
               )}/>
 
+              {/* Register page; Redirected to dashboard if already logged in */}
               <Route path="/register" render={() => (
                 isUserLoggedIn ? (
                   <Redirect to="/dashboard"/>

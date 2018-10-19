@@ -1,4 +1,7 @@
 const helpers = {
+  /**
+   * Cookies helper functions
+   */
   docCookies: {
     getItem: function(sKey) {
       if (!sKey) {
@@ -65,15 +68,11 @@ const helpers = {
       return aKeys;
     }
   },
-  getParameterByName: (name, url) => {
-    if (!url) url = window.location.href;
-    name = name.replace(/[[\]]/g, '\\$&');
-    const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
-  },
+
+  /**
+   * Check if user logged in
+   * @returns {boolean}
+   */
   isUserLoggedIn: () => {
     const userID = helpers.docCookies.getItem('gcr_user_logged_in');
 
@@ -84,6 +83,11 @@ const helpers = {
       return false;
     }
   },
+
+  /**
+   * Set user logged in cookie
+   * @param userID
+   */
   setUserLoggedIn: (userID = true) => {
     if (userID) {
       helpers.docCookies.setItem('gcr_user_logged_in', userID, 3600, '/');
@@ -91,6 +95,10 @@ const helpers = {
       helpers.docCookies.removeItem('gcr_user_logged_in', '/');
     }
   },
+
+  /**
+   * Object helper functions
+   */
   obj: {
     getProp: function(obj, prop) {
       let val = null;
@@ -112,6 +120,12 @@ const helpers = {
       return obj;
     }
   },
+
+  /**
+   * Format date string
+   * @param date
+   * @returns {string}
+   */
   formatDate: (date) => {
     const monthNames = [
       'January', 'February', 'March',
